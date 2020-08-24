@@ -1,11 +1,29 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Node Vibrant demo</title>
-</head>
-<body>
 
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Node Vibrant demo</title>
+  <script src="https://cdn.jsdelivr.net/npm/vue"></script>
+  <script src="node_modules/node-vibrant/dist/vibrant.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <div id="app">
+    <div class="image-drop" v-on:drop="dropImage" v-on:dragover="allowDrop">
+      Drop image here
+    </div>
+
+    <ul class="colors">
+      <li v-for="(color, name) in palette" class="color">
+        <div class="name">{{ name }}</div>
+        <div class="preview" v-bind:style="{backgroundColor: color.getHex()}"></div>
+      </li>
+    </ul>
+  </div>
+
+  <script src="app.js"></script>
 </body>
 </html>
